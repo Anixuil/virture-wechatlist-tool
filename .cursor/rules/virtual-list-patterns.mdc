@@ -1,0 +1,74 @@
+# 虚拟列表实现指南
+
+## 核心概念
+虚拟列表是一种优化大数据渲染的技术，只渲染可视区域内的元素，提高性能和用户体验。
+
+## 实现模式
+
+### 1. 基础虚拟列表组件结构
+```vue
+<template>
+  <div class="virtual-list-container" ref="containerRef">
+    <div class="virtual-list-phantom" :style="{ height: totalHeight + 'px' }"></div>
+    <div class="virtual-list-content" :style="{ transform: `translateY(${offsetY}px)` }">
+      <div 
+        v-for="item in visibleItems" 
+        :key="item.id"
+        class="virtual-list-item"
+        :style="{ height: itemHeight + 'px' }"
+      >
+        {{ item.content }}
+      </div>
+    </div>
+  </div>
+</template>
+```
+
+### 2. 核心计算逻辑
+- `totalHeight`: 总高度 = 数据长度 × 每项高度
+- `visibleCount`: 可视区域项目数 = 容器高度 ÷ 每项高度
+- `startIndex`: 起始索引 = Math.floor(scrollTop ÷ 每项高度)
+- `endIndex`: 结束索引 = startIndex + visibleCount + buffer
+- `offsetY`: 偏移量 = startIndex × 每项高度
+
+### 3. 性能优化要点
+- 使用 `requestAnimationFrame` 节流滚动事件
+- 设置合理的缓冲区大小（通常为可视区域的一半）
+- 使用 `transform` 而不是 `top` 进行定位
+- 避免在滚动时进行复杂计算
+
+### 4. 动态高度处理
+- 使用预估高度进行初始计算
+- 记录实际渲染高度
+- 动态调整总高度和偏移量
+
+### 5. 常用工具函数
+```typescript
+// 计算可视区域项目
+const getVisibleItems = (data: any[], startIndex: number, endIndex: number) => {
+  return data.slice(startIndex, endIndex)
+}
+
+// 节流函数
+const throttle = (fn: Function, delay: number) => {
+  let timer: number | null = null
+  return function(...args: any[]) {
+    if (timer) return
+    timer = window.setTimeout(() => {
+      fn.apply(this, args)
+      timer = null
+    }, delay)
+  }
+}
+```
+
+## 最佳实践
+- 为每个列表项设置唯一的 key
+- 合理设置缓冲区大小，平衡性能和用户体验
+- 考虑使用 ResizeObserver 监听容器尺寸变化
+- 支持键盘导航和屏幕阅读器
+- 添加加载状态和空状态处理
+description:
+globs:
+alwaysApply: false
+---

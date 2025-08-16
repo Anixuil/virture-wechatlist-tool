@@ -1,0 +1,75 @@
+# 样式和CSS规范
+
+## CSS 架构
+项目使用 Sass + UnoCSS 的组合：
+- Sass 用于组件级样式和复杂样式逻辑
+- UnoCSS 用于原子化CSS和快速样式开发
+
+## 样式文件组织
+- 全局样式：[src/style.css](mdc:src/style.css)
+- 样式入口：[src/styles/index.scss](mdc:src/styles/index.scss)
+- 主题变量：[src/styles/modules/theme/variables.scss](mdc:src/styles/modules/theme/variables.scss)
+- 混入函数：[src/styles/modules/theme/mixins.scss](mdc:src/styles/modules/theme/mixins.scss)
+
+## 命名规范
+- CSS 类名使用 kebab-case
+- BEM 方法论：`block__element--modifier`
+- 组件样式使用 scoped 属性
+- 全局样式类使用 `g-` 前缀
+
+## Vue 组件样式结构
+```vue
+<style scoped lang="scss">
+// 导入变量和混入
+@import '@/styles/modules/theme/variables.scss';
+@import '@/styles/modules/theme/mixins.scss';
+
+// 组件根元素
+.component-name {
+  // 基础样式
+  display: flex;
+  align-items: center;
+  
+  // 子元素
+  &__header {
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+  }
+  
+  // 修饰符
+  &--active {
+    background-color: $primary-color;
+  }
+  
+  // 响应式
+  @include mobile {
+    flex-direction: column;
+  }
+}
+</style>
+```
+
+## UnoCSS 使用规范
+- 优先使用 UnoCSS 原子类
+- 复杂样式使用 Sass
+- 自定义 UnoCSS 规则在 [uno.config.ts](mdc:uno.config.ts) 中配置
+
+## 响应式设计
+- 移动优先设计
+- 使用 Sass 混入处理断点
+- 支持的主题断点：xs, sm, md, lg, xl
+
+## 主题系统
+- 使用 CSS 变量定义主题色
+- 支持明暗主题切换
+- 颜色变量在 [src/styles/modules/theme/variables.scss](mdc:src/styles/modules/theme/variables.scss) 中定义
+
+## 最佳实践
+- 避免使用 `!important`
+- 使用相对单位（rem, em, %）
+- 合理使用 CSS Grid 和 Flexbox
+- 注意样式的可维护性和复用性
+description:
+globs:
+alwaysApply: false
+---

@@ -1,0 +1,233 @@
+{
+  "title": "账单",
+  "filterOptions": ["二维码收付款", "查找交易"],
+  "monthlyBills": [
+    {
+      "year": 2025,
+      "month": 7,
+      "totalIncome": 244.00,
+      "totalExpense": 0.00,
+      "transactions": [
+        {
+          "id": "1",
+          "type": "income",
+          "amount": 244.00,
+          "description": "二维码收款-来自*",
+          "date": "7月4日",
+          "time": "20:54",
+          "emoji": "🌻"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "month": 6,
+      "totalIncome": 0.00,
+      "totalExpense": 42.00,
+      "transactions": [
+        {
+          "id": "2",
+          "type": "expense",
+          "amount": 11.00,
+          "description": "扫二维码付款-给OMG.YYD",
+          "recipient": "OMG.YYD",
+          "date": "6月30日",
+          "time": "08:05"
+        },
+        {
+          "id": "3",
+          "type": "expense",
+          "amount": 22.00,
+          "description": "扫二维码付款-给栀子花",
+          "recipient": "栀子花",
+          "date": "6月26日",
+          "time": "11:44"
+        },
+        {
+          "id": "4",
+          "type": "expense",
+          "amount": 9.00,
+          "description": "扫二维码付款-给OMG.YYD",
+          "recipient": "OMG.YYD",
+          "date": "6月25日",
+          "time": "08:32"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "month": 5,
+      "totalIncome": 0.00,
+      "totalExpense": 1135.94,
+      "transactions": [
+        {
+          "id": "5",
+          "type": "expense",
+          "amount": 7.00,
+          "description": "扫二维码付款-给最美的时光",
+          "recipient": "最美的时光",
+          "date": "5月27日",
+          "time": "08:55"
+        },
+        {
+          "id": "6",
+          "type": "expense",
+          "amount": 12.00,
+          "description": "扫二维码付款-给自行车阿仙",
+          "recipient": "自行车阿仙",
+          "date": "5月24日",
+          "time": "17:07"
+        },
+        {
+          "id": "7",
+          "type": "expense",
+          "amount": 703.94,
+          "description": "扫二维码付款-给习惯就好",
+          "recipient": "习惯就好",
+          "date": "5月22日",
+          "time": "22:44"
+        },
+        {
+          "id": "8",
+          "type": "expense",
+          "amount": 413.00,
+          "description": "扫二维码付款-给咖啡店",
+          "recipient": "咖啡店",
+          "date": "5月20日",
+          "time": "14:30"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "month": 4,
+      "totalIncome": 1500.00,
+      "totalExpense": 856.50,
+      "transactions": [
+        {
+          "id": "9",
+          "type": "income",
+          "amount": 1500.00,
+          "description": "工资收入",
+          "date": "4月30日",
+          "time": "09:00",
+          "emoji": "💰"
+        },
+        {
+          "id": "10",
+          "type": "expense",
+          "amount": 128.50,
+          "description": "超市购物",
+          "date": "4月28日",
+          "time": "16:20"
+        },
+        {
+          "id": "11",
+          "type": "expense",
+          "amount": 45.00,
+          "description": "餐厅用餐",
+          "date": "4月25日",
+          "time": "19:15"
+        },
+        {
+          "id": "12",
+          "type": "expense",
+          "amount": 683.00,
+          "description": "网购商品",
+          "date": "4月20日",
+          "time": "10:30"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "month": 3,
+      "totalIncome": 0.00,
+      "totalExpense": 234.80,
+      "transactions": [
+        {
+          "id": "13",
+          "type": "expense",
+          "amount": 89.80,
+          "description": "交通费用",
+          "date": "3月31日",
+          "time": "08:45"
+        },
+        {
+          "id": "14",
+          "type": "expense",
+          "amount": 145.00,
+          "description": "电影票",
+          "date": "3月28日",
+          "time": "20:00"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "month": 2,
+      "totalIncome": 800.00,
+      "totalExpense": 567.30,
+      "transactions": [
+        {
+          "id": "15",
+          "type": "income",
+          "amount": 800.00,
+          "description": "兼职收入",
+          "date": "2月28日",
+          "time": "18:00",
+          "emoji": "💼"
+        },
+        {
+          "id": "16",
+          "type": "expense",
+          "amount": 234.30,
+          "description": "手机话费",
+          "date": "2月25日",
+          "time": "12:00"
+        },
+        {
+          "id": "17",
+          "type": "expense",
+          "amount": 333.00,
+          "description": "购物消费",
+          "date": "2月20日",
+          "time": "15:30"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "month": 1,
+      "totalIncome": 2000.00,
+      "totalExpense": 1234.56,
+      "transactions": [
+        {
+          "id": "18",
+          "type": "income",
+          "amount": 2000.00,
+          "description": "年终奖金",
+          "date": "1月31日",
+          "time": "10:00",
+          "emoji": "🎉"
+        },
+        {
+          "id": "19",
+          "type": "expense",
+          "amount": 456.78,
+          "description": "新年购物",
+          "date": "1月15日",
+          "time": "14:20"
+        },
+        {
+          "id": "20",
+          "type": "expense",
+          "amount": 777.78,
+          "description": "春节红包",
+          "date": "1月10日",
+          "time": "09:30"
+        }
+      ]
+    }
+  ]
+}

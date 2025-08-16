@@ -1,0 +1,104 @@
+# Pinia 状态管理指南
+
+## 状态管理架构
+项目使用 Pinia 作为状态管理库，配置了持久化插件。
+
+## 核心文件
+- 主入口：[src/store/index.ts](mdc:src/store/index.ts)
+- 通用状态：[src/store/modules/common.ts](mdc:src/store/modules/common.ts)
+
+## Store 定义规范
+```typescript
+import { defineStore } from 'pinia'
+
+// 定义状态接口
+interface IUserState {
+  userInfo: IUserInfo | null
+  token: string
+  isLoggedIn: boolean
+}
+
+// 定义 Store
+export const useUserStore = defineStore('user', {
+  state: (): IUserState => ({
+    userInfo: null,
+    token: '',
+    isLoggedIn: false
+  }),
+  
+  getters: {
+    // 计算属性
+    userName: (state) => state.userInfo?.name || '未登录',
+    hasPermission: (state) => (permission: string) => {
+      return state.userInfo?.permissions?.includes(permission) || false
+    }
+  },
+  
+  actions: {
+    // 异步操作
+    async login(credentials: ILoginCredentials) {
+      try {
+        const response = await api.login(credentials)
+        this.userInfo = response.user
+        this.token = response.token
+        this.isLoggedIn = true
+        return response
+      } catch (error) {
+        throw error
+      }
+    },
+    
+    // 同步操作
+    logout() {
+      this.userInfo = null
+      this.token = ''
+      this.isLoggedIn = false
+    }
+  },
+  
+  // 持久化配置
+  persist: {
+    key: 'user-store',
+    storage: localStorage,
+    paths: ['token', 'userInfo']
+  }
+})
+```
+
+## 使用规范
+- Store 命名使用 camelCase，以 `use` 开头
+- 状态接口以 `I` 开头，以 `State` 结尾
+- 异步操作使用 `actions`
+- 计算属性使用 `getters`
+- 复杂状态拆分为多个 Store
+
+## 组件中使用
+```vue
+<script setup lang="ts">
+import { useUserStore } from '@/store/modules/user'
+
+const userStore = useUserStore()
+
+// 访问状态
+const userInfo = userStore.userInfo
+
+// 调用 action
+const handleLogin = async () => {
+  await userStore.login(credentials)
+}
+
+// 使用 getter
+const hasAdminPermission = userStore.hasPermission('admin')
+</script>
+```
+
+## 最佳实践
+- 避免在 Store 中直接操作 DOM
+- 使用 TypeScript 严格类型定义
+- 合理使用持久化，只持久化必要数据
+- 避免过度使用全局状态
+- 使用组合式函数封装复杂逻辑
+description:
+globs:
+alwaysApply: false
+---
