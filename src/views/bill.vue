@@ -1117,7 +1117,7 @@ const loadPhoneConfigFromUrl = () => {
 
 .visual-config {
   .bill-config-visual {
-    max-height: calc(100vh - 300px);
+    max-height: calc(100vh - 500px);
     overflow-y: auto;
   }
 }
